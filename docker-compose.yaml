@@ -1,6 +1,7 @@
 services:
   loki:
     image: grafana/loki:latest
+    container_name: loki
     restart: always
     ports:
       - 3100:3100
@@ -9,6 +10,7 @@ services:
 
   grafana:
     image: grafana/grafana:latest
+    container_name: grafana
     restart: always
     volumes:
       - ./config/grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
