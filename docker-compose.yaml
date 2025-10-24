@@ -1,6 +1,6 @@
 services:
   loki:
-    image: grafana/loki/latest
+    image: grafana/loki:latest
     restart: always
     ports:
       - 3100:3100
