@@ -57,6 +57,7 @@ services:
       - GF_SECURITY_ALLOW_EMBEDDING=true
     depends_on:
       - loki
+      - prometheus
       - tempo
       - mimir
 
@@ -77,13 +78,14 @@ services:
       - ./config/otel/otel.yaml:/etc/otelcol/config.yaml
     depends_on:
       - loki
+      - prometheus
       - tempo
       - mimir
       - grafana
 
-  promtail:
-    image: grafana/promtail:latest
-    container_name: promtail
-    volumes:
-      - /var/log:/var/log
-    command: [ "-config.file=/etc/promtail/config.yaml" ]
+  # promtail:
+  #   image: grafana/promtail:latest
+  #   container_name: promtail
+  #   volumes:
+  #     - /var/log:/var/log
+  #   command: [ "-config.file=/etc/promtail/config.yaml" ]
