@@ -22,11 +22,11 @@ metrics_generator:
     external_labels:
       source: tempo
       cluster: docker-compose
-    storage:
-      path: /tmp/tempo/generator/wal
-      remote_write:
-        - url: http://mimir:9090/api/v1/push
-          send_exemplars: true
+  storage:
+    path: /tmp/tempo/generator/wal
+    remote_write:
+      - url: http://mimir:9090/api/v1/push
+        send_exemplars: true
 
 storage:
   trace:
@@ -36,5 +36,5 @@ storage:
     local:
       path: /tmp/tempo/blocks
 
-overrride:
+overrides:
   metrics_generator_processors: [service_graphs, span_metrics]
